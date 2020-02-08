@@ -56,9 +56,9 @@
 		1042F36723EBC89E008CCF62 /* FeltTempSwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				1042F36C23EBC89E008CCF62 /* ContentView.swift */,
 				1042F36823EBC89E008CCF62 /* AppDelegate.swift */,
 				1042F36A23EBC89E008CCF62 /* SceneDelegate.swift */,
-				1042F36C23EBC89E008CCF62 /* ContentView.swift */,
 				1042F36E23EBC89F008CCF62 /* Assets.xcassets */,
 				1042F37323EBC89F008CCF62 /* LaunchScreen.storyboard */,
 				1042F37623EBC89F008CCF62 /* Info.plist */,
