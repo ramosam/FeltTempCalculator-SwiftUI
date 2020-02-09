@@ -14,6 +14,7 @@
 		1042F37223EBC89F008CCF62 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1042F37123EBC89F008CCF62 /* Preview Assets.xcassets */; };
 		1042F37523EBC89F008CCF62 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1042F37323EBC89F008CCF62 /* LaunchScreen.storyboard */; };
 		1056E1E623EF71B100A46C05 /* FeltTempCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056E1E523EF71B000A46C05 /* FeltTempCalculator.swift */; };
+		1056E1EA23EF8BBD00A46C05 /* KeyboardResponsiveModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1056E1E923EF8BBD00A46C05 /* KeyboardResponsiveModifier.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		1042F37423EBC89F008CCF62 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1042F37623EBC89F008CCF62 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1056E1E523EF71B000A46C05 /* FeltTempCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeltTempCalculator.swift; sourceTree = "<group>"; };
+		1056E1E923EF8BBD00A46C05 /* KeyboardResponsiveModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardResponsiveModifier.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				1042F37323EBC89F008CCF62 /* LaunchScreen.storyboard */,
 				1042F37623EBC89F008CCF62 /* Info.plist */,
 				1042F37023EBC89F008CCF62 /* Preview Content */,
+				1056E1E923EF8BBD00A46C05 /* KeyboardResponsiveModifier.swift */,
 			);
 			path = FeltTempSwiftUI;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1056E1EA23EF8BBD00A46C05 /* KeyboardResponsiveModifier.swift in Sources */,
 				1042F36923EBC89E008CCF62 /* AppDelegate.swift in Sources */,
 				1042F36B23EBC89E008CCF62 /* SceneDelegate.swift in Sources */,
 				1056E1E623EF71B100A46C05 /* FeltTempCalculator.swift in Sources */,
