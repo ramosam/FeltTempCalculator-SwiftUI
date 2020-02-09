@@ -10,140 +10,192 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State var isWind = true
-    @State var isFahrenheit = true
+    @Environment(\.horizontalSizeClass) var sizeClass
     
-    @State var tempTextField: String = ""
-    @State var humidityTextField: String = ""
     
-    @State var windSpeed: Double = 50
-    var minimumValue = 1.0
-    var maximumvalue = 100.0
+    @State private var isWind = true
+    @State private var isFahrenheit = true
     
-    var feltTempLabel = "9000"
-    var actualTempLabel = "9000"
+    @State private var tempTextField: String = ""
+    @State private var humidityTextField: String = ""
     
+    @State private var windSpeed: Double = 50
+    private var minimumValue = 1.0
+    private var maximumvalue = 100.0
+    
+    private var feltTempLabel = ""
+    private var actualTempLabel = ""
+    
+    func calcTemp() -> (actualTemp: Double, feltTemp: Double) {
+        if tempTextField == "" { return (0, 0) }
+        let (actualTemp, feltTemp) = FeltTempCalculator.calculateFeltTemp(temp: Double(tempTextField)!, isFahrenheit: isFahrenheit, isWind: isWind, windSpeed: windSpeed, humidity: Double(humidityTextField))
+        return (actualTemp, feltTemp)
+    }
     
     var body: some View {
         
         GeometryReader { geometry in
             ZStack {
+                // Background Image
                 Image("clouds")
                     .edgesIgnoringSafeArea(.all)
+
+                // Overall Layout
                 VStack {
+                    // Title
                     Text("Felt Temperature Calculator")
                         .font(.title)
                         .fontWeight(.bold)
                         // trial and error
                         .offset(y: -67)
                     
-                    // MARK: inputStack
-                    VStack {
-                        
-                        Text("Enter a temperature:")
-                        TextField("Temperature", text: self.$tempTextField)
-                            .frame(width: 100.0, height: 24.0)
-                            .padding(5.0)
-                        Text("Additional settings:")
-                            .padding(5.0)
+                    if !(self.sizeClass == .compact) {
                         HStack {
-                            Toggle(isOn: self.$isWind) {
-                                Text(self.isWind ? "Wind" : "Humidity")
-                                   
+                            // TempInputStack
+                            VStack {
+                                
+                                Text("Enter a temperature:")
+                                TextField("Temperature", text: self.$tempTextField)
+                                    .frame(width: 100.0, height: 24.0)
+                                    .padding(5.0)
+                                    
+                                Text("Additional settings:")
+                                    .padding(5.0)
+                                HStack {
+                                    Toggle(isOn: self.$isWind) {
+                                        Text(self.isWind ? "Wind" : "Humidity")
+                                           
+                                    }
+                                    .padding(.trailing, 5.0)
+                                    .frame(width: 135.0)
+                                    Toggle(isOn: self.$isFahrenheit) {
+                                        Text(self.isFahrenheit ? "Fahrenheit" : "Celsius")
+                                    }
+                                    .frame(width: 150.0)
+                                }
+                                    
+                                .padding(5.0)
                             }
-                            .padding(.trailing, 5.0)
-                            .frame(width: 135.0)
-                            Toggle(isOn: self.$isFahrenheit) {
-                                Text(self.isFahrenheit ? "Fahrenheit" : "Celsius")
+                            .keyboardResponsive()
+                            .padding()
+                            .background(Color.white.opacity(0.6))
+                            
+                            // EditAndResultStack
+                            VStack {
+                                if self.isWind {
+                                    HStack {
+                                        Text("Wind: ")
+                                        Text("\(Int(self.minimumValue))")
+                                        Slider(value: self.$windSpeed, in: 1...100)
+                                            .frame(width: 100.0)
+                                        Text("\(Int(self.maximumvalue))")
+                                            .padding(.trailing)
+                                        Text("\(Int(self.windSpeed))")
+                                    }
+                                    .padding(.vertical, 5.0)
+                                    .frame(width: 300.0, height: 24.0)
+                                } else {
+                                    HStack {
+                                        Text("Humidty: ")
+                                        Spacer()
+                                        TextField("0.01", text: self.$humidityTextField)
+                                        
+
+                                    }
+                                    .padding(.vertical, 5.0)
+                                    .frame(width: 150.0, height: 24.0)
+                                }
+
+                                HStack {
+                                    Text("Felt Temperature: ")
+                                    Text(String(format: "%.1f", self.calcTemp().feltTemp))
+                                }
+                                .padding(.vertical, 25.0)
+                                
+                                HStack {
+                                    Text("Actual Temperature: ")
+                                    Text(String(format: "%.1f", self.calcTemp().actualTemp))
+                                }
+                                .padding(.vertical, 5.0)
                             }
-                            .frame(width: 150.0)
+                            .frame(width: 300)
+                            .padding(.horizontal)
+                            .padding(.vertical, 30)
+                            .background(Color.white.opacity(0.6))
+                            .keyboardResponsive()
                         }
-                        .padding(5.0)
-                    }
-                    .padding()
-                    .background(Color.white.opacity(0.6))
-                    
-                    // MARK: windResults
-                    VStack {
-                        HStack {
-                            Text("Wind: ")
-                            Text("\(Int(self.minimumValue))")
-                            Slider(value: self.$windSpeed, in: 1...100)
-                                .frame(width: 100.0)
-                            Text("\(Int(self.maximumvalue))")
-                                .padding(.trailing)
-                            Text("\(Int(self.windSpeed))")
+                    } else {
+                        // TempInputStack
+                        VStack {
+                            
+                            Text("Enter a temperature:")
+                            TextField("Temperature", text: self.$tempTextField)
+                                .frame(width: 100.0, height: 24.0)
+                                .padding(5.0)
+                            Text("Additional settings:")
+                                .padding(5.0)
+                            HStack {
+                                Toggle(isOn: self.$isWind) {
+                                    Text(self.isWind ? "Wind" : "Humidity")
+                                       
+                                }
+                                .padding(.trailing, 5.0)
+                                .frame(width: 135.0)
+                                Toggle(isOn: self.$isFahrenheit) {
+                                    Text(self.isFahrenheit ? "Fahrenheit" : "Celsius")
+                                }
+                                .frame(width: 150.0)
+                            }
+                            .padding(5.0)
                         }
-                        .padding(.vertical, 5.0)
-                        .frame(width: 300.0, height: 24.0)
+                        .padding()
+                        .background(Color.white.opacity(0.6))
 
-                        HStack {
-                            Text("Humidty: ")
-                            Spacer()
-                            TextField("0.01", text: self.$humidityTextField)
+                        // EditAndResultStack
+                        VStack {
+                            if self.isWind {
+                                HStack {
+                                    Text("Wind: ")
+                                    Text("\(Int(self.minimumValue))")
+                                    Slider(value: self.$windSpeed, in: 1...100)
+                                        .frame(width: 100.0)
+                                    Text("\(Int(self.maximumvalue))")
+                                        .padding(.trailing)
+                                    Text("\(Int(self.windSpeed))")
+                                }
+                                .padding(.vertical, 5.0)
+                                .frame(width: 300.0, height: 24.0)
+                            } else {
+                                HStack {
+                                    Text("Humidty: ")
+                                    Spacer()
+                                    TextField("0.01", text: self.$humidityTextField)
 
+                                }
+                                   .padding(.vertical, 5.0)
+                                
+                                   .frame(width: 150.0, height: 24.0)
+                            }
+                            HStack {
+                                Text("Felt Temperature: ")
+                                Text(String(format: "%.1f", self.calcTemp().feltTemp))
+                            }
+                            .padding(.vertical, 5.0)
+                            
+                            HStack {
+                                Text("Actual Temperature: ")
+                                Text(String(format: "%.1f", self.calcTemp().actualTemp))
+                            }
+                            .padding(.vertical, 5.0)
                         }
-                        .padding(.vertical, 5.0)
-                        .frame(width: 150.0, height: 24.0)
-                        
-                        HStack {
-                            Text("Felt Temperature: ")
-                            Text("\(self.feltTempLabel)")
-                        }
-                        .padding(.vertical, 5.0)
-                        
-                        HStack {
-                            Text("Actual Temperature: ")
-                            Text("\(self.actualTempLabel)")
-                        }
-                        .padding(.vertical, 5.0)
-                    
+                        .padding(.vertical)
+                        .frame(width: 335)
+                        .background(Color.white.opacity(0.6))
+                        .keyboardResponsive()
                     }
-                    .padding()
-                    .background(Color.white.opacity(0.6))
-                
                 }
             }
         }
-        
-        
-        
-        
-        
-        
-  
-//        VStack() {
-//            Image("clouds")
-//                .frame(alignment: .center)
-//
-//
-//            Text("Felt Temperature Calculator")
-//                .font(.title)
-//                .fontWeight(.bold)
-//                // trial and error
-//                .offset(y: -67)
-//            HStack {
-//
-//            }
-//
-//        }
-        
-        
-        
-        
-        
-        
-        
-//        VStack {
-//            Text("Hello")
-//            Button(action: {
-//                // TODO
-//            }) {
-//                Image("clouds-sm")
-//                    .renderingMode(.original)
-//            }
-//        }
-        
     }
 }
 
