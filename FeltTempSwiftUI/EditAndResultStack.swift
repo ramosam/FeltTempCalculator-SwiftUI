@@ -31,38 +31,37 @@ struct EditAndResultStack: View {
                 HStack {
                     Text("Wind: ")
                     Text("\(Int(minimumValue))")
-                    Slider(value: self.$windSpeed, in: 1...100)
-                        .frame(width: 100.0)
+                    Slider(value: self.$windSpeed, in: minimumValue...maximumValue)
+                        
                     Text("\(Int(maximumValue))")
                         .padding(.trailing)
                     Text("\(Int(windSpeed))")
                 }
-                .padding(.vertical, 5.0)
-                .frame(width: 300.0, height: 24.0)
+                .padding(10)
+                .frame(height: 24.0)
             } else {
                 HStack {
                     Text("Humidty: ")
-                    Spacer()
                     TextField("0.01", text: self.$humidityTextField)
-                    
                 }
-                .padding(.vertical, 5.0)
-                    
-                .frame(width: 150.0, height: 24.0)
+                .padding(10)
+                .padding(.leading, 80)
+                .frame(width: 300, height: 24)
             }
+            
             HStack {
                 Text("Felt Temperature: ")
                 Text(String(format: "%.1f", feltTemp))
             }
-            .padding(.vertical, 5.0)
+            .padding(10)
             
             HStack {
                 Text("Actual Temperature: ")
                 Text(String(format: "%.1f", actualTemp))
             }
-            .padding(.vertical, 5.0)
+            .padding(10)
         }
-        .frame(width: isCompact ? 350 : 335)
+        .frame(width: 335, height: 190)
         .background(Color.white.opacity(0.6))
         .keyboardResponsive()
     }

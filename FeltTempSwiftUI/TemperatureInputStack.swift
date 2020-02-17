@@ -10,6 +10,8 @@ import SwiftUI
 
 struct TemperatureInputStack: View {
     
+    @State private var showingAlert = false
+    
     @Binding var tempTextField: String
     @Binding var isWind: Bool
     @Binding var isFahrenheit: Bool
@@ -25,10 +27,21 @@ struct TemperatureInputStack: View {
             Text("Additional settings:")
                 .padding(5.0)
             HStack {
-                Toggle(isOn: self.$isWind) {
+//                Button(isWind ? "Wind" : "Humidity") {
+//                    self.showingAlert = true
+//
+//                }
+                Button(action: {
+                    self.showingAlert = true
+                    self.isWind = !self.isWind
+                }) {
                     Text(isWind ? "Wind" : "Humidity")
-                    
                 }
+                .buttonStyle(DefaultButtonStyle())
+                .alert(isPresented: $showingAlert) {
+                    Alert(title: Text("Settings Changed!"), message: Text(isWind ? "Changed to Wind" : "Changed to Humidity"), dismissButton: .default(Text("Great")))
+                }
+
                 .padding(.trailing, 5.0)
                 .frame(width: 135.0)
                 Toggle(isOn: self.$isFahrenheit) {

@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		1027AFA023FA3F7C00184E15 /* TemperatureInputStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027AF9F23FA3F7C00184E15 /* TemperatureInputStack.swift */; };
 		1027AFA223FA489700184E15 /* EditAndResultStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027AFA123FA489700184E15 /* EditAndResultStack.swift */; };
+		1027AFA423FA541600184E15 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027AFA323FA541600184E15 /* TitleView.swift */; };
+		1027AFA623FA6E1700184E15 /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027AFA523FA6E1700184E15 /* AboutView.swift */; };
+		1027AFA823FA73A300184E15 /* CalcHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1027AFA723FA73A300184E15 /* CalcHistoryView.swift */; };
 		1042F36923EBC89E008CCF62 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042F36823EBC89E008CCF62 /* AppDelegate.swift */; };
 		1042F36B23EBC89E008CCF62 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042F36A23EBC89E008CCF62 /* SceneDelegate.swift */; };
 		1042F36D23EBC89E008CCF62 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1042F36C23EBC89E008CCF62 /* ContentView.swift */; };
@@ -22,6 +25,9 @@
 /* Begin PBXFileReference section */
 		1027AF9F23FA3F7C00184E15 /* TemperatureInputStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TemperatureInputStack.swift; sourceTree = "<group>"; };
 		1027AFA123FA489700184E15 /* EditAndResultStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAndResultStack.swift; sourceTree = "<group>"; };
+		1027AFA323FA541600184E15 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
+		1027AFA523FA6E1700184E15 /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		1027AFA723FA73A300184E15 /* CalcHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcHistoryView.swift; sourceTree = "<group>"; };
 		1042F36523EBC89E008CCF62 /* FeltTempSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FeltTempSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1042F36823EBC89E008CCF62 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1042F36A23EBC89E008CCF62 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,9 +72,12 @@
 			children = (
 				1056E1E523EF71B000A46C05 /* FeltTempCalculator.swift */,
 				1042F36C23EBC89E008CCF62 /* ContentView.swift */,
+				1027AFA323FA541600184E15 /* TitleView.swift */,
 				1027AF9F23FA3F7C00184E15 /* TemperatureInputStack.swift */,
 				1027AFA123FA489700184E15 /* EditAndResultStack.swift */,
 				1042F36823EBC89E008CCF62 /* AppDelegate.swift */,
+				1027AFA523FA6E1700184E15 /* AboutView.swift */,
+				1027AFA723FA73A300184E15 /* CalcHistoryView.swift */,
 				1042F36A23EBC89E008CCF62 /* SceneDelegate.swift */,
 				1042F36E23EBC89F008CCF62 /* Assets.xcassets */,
 				1042F37323EBC89F008CCF62 /* LaunchScreen.storyboard */,
@@ -160,11 +169,14 @@
 			files = (
 				1056E1EA23EF8BBD00A46C05 /* KeyboardResponsiveModifier.swift in Sources */,
 				1042F36923EBC89E008CCF62 /* AppDelegate.swift in Sources */,
+				1027AFA823FA73A300184E15 /* CalcHistoryView.swift in Sources */,
 				1042F36B23EBC89E008CCF62 /* SceneDelegate.swift in Sources */,
 				1027AFA223FA489700184E15 /* EditAndResultStack.swift in Sources */,
+				1027AFA623FA6E1700184E15 /* AboutView.swift in Sources */,
 				1056E1E623EF71B100A46C05 /* FeltTempCalculator.swift in Sources */,
 				1027AFA023FA3F7C00184E15 /* TemperatureInputStack.swift in Sources */,
 				1042F36D23EBC89E008CCF62 /* ContentView.swift in Sources */,
+				1027AFA423FA541600184E15 /* TitleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
